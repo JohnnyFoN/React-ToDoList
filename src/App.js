@@ -1,21 +1,16 @@
 import React from "react";
-import logo from "./logo.svg";
+//import logo from "./logo.svg";
 import "./App.css";
+import Footer from "./components/footer";
+import Header from "./components/header";
+import Main from "./components/main";
 
 function App() {
   return (
     <div>
-      <nav>
-        <h1>Hello third time</h1>
-        <ul>
-          <li>First</li>
-          <li>Second</li>
-          <li>Third</li>
-        </ul>
-      </nav>
-      <main>
-        <p>Paragraph of the web page with some content and text</p>
-      </main>
+      <Header />
+      <Main />
+      <Footer />
     </div>
   );
 }
