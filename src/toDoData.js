@@ -16,7 +16,12 @@ const toDoData = [
   },
   {
     id: 4,
-    text: "Whatch the episode of Taboo",
+    text: "Watch the episode of Taboo",
+    completed: false
+  },
+  {
+    id: 5,
+    text: "Check the washing machine",
     completed: false
   }
 ];
