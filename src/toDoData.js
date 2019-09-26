@@ -11,7 +11,6 @@ const toDoData = [
   },
   {
     id: 3,
-    text: "Call the friend",
     completed: true
   },
   {

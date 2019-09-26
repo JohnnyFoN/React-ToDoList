@@ -13,7 +13,11 @@ class Header extends React.Component {
   }
 
   render() {
-    return <header className="navbar">{this.state.title}</header>;
+    return (
+      <header className="navbar">
+        <input type="text" value={this.state.title}></input>
+      </header>
+    );
   }
 }
 

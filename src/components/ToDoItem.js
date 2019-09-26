@@ -11,10 +11,11 @@ import React from "react";
 
 class ToDoItem extends React.Component {
   render() {
+    const text = this.props.item.text || "Missing text";
     return (
       <div className="todo-item">
         <input type="checkbox" />
-        <h3>{this.props.item.text}</h3>
+        <h3>{text}</h3>
       </div>
     );
   }
