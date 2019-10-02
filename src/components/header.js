@@ -1,21 +1,52 @@
 import React from "react";
 
-// function Header() {
-//   return <header className="navbar">To do list:</header>;
-// }
-
 class Header extends React.Component {
-  constructor() {
-    super();
+  state = {
+    showInput: false
+  };
+
+  constructor(props) {
+    super(props);
     this.state = {
-      title: "To do list"
+      title: props.title || "To do list"
     };
   }
 
+  onChange(e) {
+    this.setState({
+      title: e.target.value
+    });
+  }
+
   render() {
+    const { showInput } = this.state;
     return (
       <header className="navbar">
-        <input type="text" value={this.state.title}></input>
+        <div>
+          {!showInput ? (
+            <div>
+              <h2>{this.state.title}</h2>
+            </div>
+          ) : (
+            <div>
+              <input
+                className="inputField"
+                type="text"
+                value={this.state.title}
+                onChange={e => {
+                  this.onChange(e);
+                }}
+              ></input>
+            </div>
+          )}
+        </div>
+
+        <button
+          className="editBtn"
+          onClick={() => this.setState({ showInput: !showInput })}
+        >
+          {!showInput ? "Edit" : "Save"}
+        </button>
       </header>
     );
   }

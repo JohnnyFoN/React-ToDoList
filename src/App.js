@@ -5,6 +5,8 @@ import Header from "./components/header";
 import Main from "./components/main";
 import toDoData from "./toDoData";
 
+import TestComponent from "./components/testComponent";
+
 class App extends React.Component {
   render() {
     const { itemList } = this.state || {};
@@ -19,3 +21,11 @@ class App extends React.Component {
 }
 
 export default App;
+
+/*
+
+<Header />
+        <Main items={toDoData} />
+        <Footer items={toDoData} />
+
+*/

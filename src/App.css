@@ -54,3 +54,28 @@ body {
 input[type="checkbox"] {
   margin-right: 10px;
 }
+
+.editBtn {
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  color: whitesmoke;
+  background-color: darkred;
+  padding-right: 16px;
+  padding-left: 16px;
+  border-color: darkred;
+  text-decoration: none;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.inputField {
+  width: 250px;
+  height: 25px;
+  color: darkred;
+  align-items: center;
+  font-family: Roboto, sans-serif;
+  font-size: 25px;
+  border-radius: 10px;
+  border-color: #282c34;
+  padding-left: 10px;
+}

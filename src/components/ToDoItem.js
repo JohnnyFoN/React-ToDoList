@@ -1,20 +1,20 @@
 import React from "react";
-
-// function ToDoItem(props) {
-//   return (
-//     <div className="todo-item">
-//       <input type="checkbox" />
-//       <h3>{props.item.text}</h3>
-//     </div>
-//   );
-// }
+//import toDoData from "../toDoData";
 
 class ToDoItem extends React.Component {
+  constructor() {
+    super();
+  }
+
   render() {
     const text = this.props.item.text || "Missing text";
+
     return (
       <div className="todo-item">
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          onChange={() => this.props.handleChange(this.props.item.id)}
+        />
         <h3>{text}</h3>
       </div>
     );

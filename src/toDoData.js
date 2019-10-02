@@ -11,12 +11,13 @@ const toDoData = [
   },
   {
     id: 3,
+    text: "Cook meal",
     completed: true
   },
   {
     id: 4,
-    text: "Watch the episode of Taboo",
-    completed: false
+    text: "Finish book",
+    completed: true
   },
   {
     id: 5,

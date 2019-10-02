@@ -1,14 +1,6 @@
 import React from "react";
-import toDoData from "../toDoData";
-import ToDoItem from "./ToDoItem";
-
-// function Footer() {
-//   return (
-//     <footer>
-//       <h3>The footer content</h3>
-//     </footer>
-//   );
-// }
+// import toDoData from "../toDoData";
+// import ToDoItem from "./ToDoItem";
 
 class Footer extends React.Component {
   render() {
