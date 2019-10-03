@@ -23,9 +23,42 @@ class App extends React.Component {
 export default App;
 
 /*
+ constructor() {
+    super();
+    this.state = {
+      loading: true
+    };
+  }
 
-<Header />
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        loading: false
+      });
+    }, 1500);
+  }
+
+  render() {
+    return (
+      <div>{this.state.loading ? <h1>Loading...</h1> : <TestComponent />}</div>
+    );
+  }
+
+*/
+
+/* REAL APP
+
+
+
+render() {
+    const { itemList } = this.state || {};
+    return (
+      <div>
+        <Header />
         <Main items={toDoData} />
         <Footer items={toDoData} />
+      </div>
+    );
+  }
 
 */
