@@ -8,7 +8,8 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: props.title || "To do list"
+      title: props.title || "To do list",
+      invalid: false
     };
   }
 
@@ -16,11 +17,11 @@ class Header extends React.Component {
     const pattern = "[0-9]";
     if (e.target.value.match(pattern)) {
       this.setState({
-        color: "red"
+        invalid: true
       });
     } else {
       this.setState({
-        color: "whitesmoke",
+        invalid: false,
         title: e.target.value
       });
     }
@@ -35,13 +36,13 @@ class Header extends React.Component {
   }
 
   displayInput() {
+    const { title, invalid } = this.state;
     return (
       <div>
         <input
-          style={{ backgroundColor: this.state.color }}
-          className="inputField"
+          className={`dafault ${invalid ? "red" : "white"}`}
           type="text"
-          value={this.state.title}
+          value={title}
           onChange={e => {
             this.onChange(e);
           }}
