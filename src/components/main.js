@@ -25,36 +25,58 @@ class Main extends React.Component {
       todos: toDoData,
       filter: {
         type: "all"
-      }
+      },
+      sortType: "A-Z"
     };
     this.changeValue = this.changeValue.bind(this);
-    this.removeItem = this.removeItem.bind(this);
+    this.changeSort = this.changeSort.bind(this);
   }
 
   addItemToList(item) {
-    this.setState({
-      todos: [...this.state.todos, item]
-    });
+    this.setState(
+      {
+        todos: [...this.state.todos, item]
+      },
+      () => {
+        this.props.updateRemainingTasks(
+          this.state.todos.filter(i => i.completed === false).length
+        );
+      }
+    );
   }
 
   removeItem(item) {
-    this.setState({
-      todos: this.state.todos.filter(a => a.id !== item.id)
-    });
+    this.setState(
+      {
+        todos: this.state.todos.filter(a => a.id !== item.id)
+      },
+      () => {
+        this.props.updateRemainingTasks(
+          this.state.todos.filter(i => i.completed === false).length
+        );
+      }
+    );
   }
 
   handleChange(id) {
-    this.setState(prevState => {
-      const updatedTodos = prevState.todos.map(todo => {
-        if (todo.id === id) {
-          todo.completed = !todo.completed;
-        }
-        return todo;
-      });
-      return {
-        todos: updatedTodos
-      };
-    });
+    this.setState(
+      prevState => {
+        const updatedTodos = prevState.todos.map(todo => {
+          if (todo.id === id) {
+            todo.completed = !todo.completed;
+          }
+          return todo;
+        });
+        return {
+          todos: updatedTodos
+        };
+      },
+      () => {
+        this.props.updateRemainingTasks(
+          this.state.todos.filter(i => i.completed === false).length
+        );
+      }
+    );
   }
 
   changeValue(event) {
@@ -77,7 +99,30 @@ class Main extends React.Component {
     });
   }
 
+  changeSort() {
+    var sortTypeValue;
+    var sortedTodos;
+
+    this.state.sortType === "A-Z"
+      ? (sortTypeValue = "Z-A")
+      : (sortTypeValue = "A-Z");
+
+    this.state.sortType === "Z-A"
+      ? (sortedTodos = this.state.todos.sort((a, b) =>
+          a.text < b.text ? 1 : -1
+        ))
+      : (sortedTodos = this.state.todos.sort((a, b) =>
+          a.text > b.text ? 1 : -1
+        ));
+
+    this.setState({
+      sortType: sortTypeValue,
+      todos: sortedTodos
+    });
+  }
+
   render() {
+    console.log(this.state.todos);
     let items = this.getFilteredItems();
 
     let itemList = Object.values(FILTER).map((item, i) => {
@@ -101,7 +146,9 @@ class Main extends React.Component {
           </select>
         </div>
         <div className="sorts">
-          <span className="sortBtn">&#8645; A-Z</span>
+          <span className="sortBtn" onClick={this.changeSort}>
+            &#8645; {this.state.sortType}
+          </span>
         </div>
 
         <div className="todo-list">
