@@ -32,16 +32,27 @@ class Main extends React.Component {
     this.changeSort = this.changeSort.bind(this);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log("In update method");
+    if (this.state.todos !== prevState.todos) {
+      console.log("In if statement");
+      this.props.updateRemainingTasks(
+        this.state.todos.filter(i => i.completed === false).length
+      );
+    }
+  }
+
   addItemToList(item) {
     this.setState(
       {
         todos: [...this.state.todos, item]
-      },
-      () => {
-        this.props.updateRemainingTasks(
-          this.state.todos.filter(i => i.completed === false).length
-        );
       }
+      // ,
+      // () => {
+      //   this.props.updateRemainingTasks(
+      //     this.state.todos.filter(i => i.completed === false).length
+      //   );
+      // }
     );
   }
 
@@ -49,12 +60,13 @@ class Main extends React.Component {
     this.setState(
       {
         todos: this.state.todos.filter(a => a.id !== item.id)
-      },
-      () => {
-        this.props.updateRemainingTasks(
-          this.state.todos.filter(i => i.completed === false).length
-        );
       }
+      // ,
+      // () => {
+      //   this.props.updateRemainingTasks(
+      //     this.state.todos.filter(i => i.completed === false).length
+      //   );
+      // }
     );
   }
 
@@ -70,12 +82,13 @@ class Main extends React.Component {
         return {
           todos: updatedTodos
         };
-      },
-      () => {
-        this.props.updateRemainingTasks(
-          this.state.todos.filter(i => i.completed === false).length
-        );
       }
+      // ,
+      // () => {
+      //   this.props.updateRemainingTasks(
+      //     this.state.todos.filter(i => i.completed === false).length
+      //   );
+      // }
     );
   }
 
@@ -122,7 +135,6 @@ class Main extends React.Component {
   }
 
   render() {
-    console.log(this.state.todos);
     let items = this.getFilteredItems();
 
     let itemList = Object.values(FILTER).map((item, i) => {

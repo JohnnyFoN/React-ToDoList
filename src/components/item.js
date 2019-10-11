@@ -1,5 +1,5 @@
 import React from "react";
-import ToDoItem from "./ToDoItem";
+//import ToDoItem from "./ToDoItem";
 import toDoData from "../toDoData";
 
 class Item extends React.Component {

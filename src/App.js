@@ -7,6 +7,10 @@ import toDoData from "./toDoData";
 
 //import TestComponent from "./components/testComponent";
 
+/*const swData = fetch("https://swapi.co/api/people/1/")
+  .then(response => response.json())
+  .then(data => console.log(data));*/
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -22,8 +26,6 @@ class App extends React.Component {
     });
   }
   render() {
-    const { itemList } = this.state || {};
-
     return (
       <div>
         <Header />
